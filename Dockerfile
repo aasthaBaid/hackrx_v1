@@ -12,7 +12,8 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --upgrade pip \
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/* \
+ && pip install --upgrade pip \
  && pip install --no-cache-dir -r requirements.txt
 
 # Copy the full project into the container
